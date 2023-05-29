@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script defer src="js/index.js"></script>
+</head>
+<body>
+<label for="flagOpacity">Opazität der Flagge
+    <input id="flagOpacity" type="range" min="0" max="100" value="100">
+</label>
+<label for="flagSelect">Wählen Sie eine Flagge aus.
+    <select id="flagSelect">
+        <option value="flags/germanPride.png" selected>Deutschland Pride</option>
+        <option value="flags/german.png">Deutschland</option>
+        <option value="flags/germanGradient.png">Deutschland Farbverlauf</option>
+        <option value="flags/austrian.png">Österreich</option>
+        <option value="flags/swizz.png">Schweiz</option>
+        <option value="flags/kaiserreich.png">Kaiserreich</option>
+    </select>
+</label>
+<label for="circularImageCheckbox">
+    <input type="checkbox" id="circularImageCheckbox">
+    Profilbild Runden
+</label>
+
+<label for="dontAdjustImageCheckbox">
+    <input type="checkbox" id="dontAdjustImageCheckbox">
+    Bild nicht an Padding anpassen
+</label>
+<label for="paddingRange">Padding zum Rand
+    <input id="paddingRange" type="range" min="0" max="200" value="50">
+</label>
+<label for="imageUploadInput">Profilbild
+    <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
+           accept="image/*">
+</label>
+<canvas id="resultCanvas" style="width: 90%"></canvas>
+
+<button id="downloadCanvas">Herunterladen</button>
+</body>
+</html>
