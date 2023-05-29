@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</label>
+<canvas id="resultCanvas" style="width: 90%"></canvas>
+<script>
+    const resultCanvas = document.getElementById('resultCanvas')
+    const resultCanvasContext = resultCanvas.getContext('2d')
+
+    const loadedImage = src => new Promise(resolve => {
+        const image = new Image()
+        image.src = src
+        image.onload = () => resolve(image)
+    })
+
+    const initFlagCanvas = async (flagUrl, size, opacity) => {
+        const flag = await loadedImage(flagUrl)
+        resultCanvas.width = size
+        resultCanvas.height = size
+
+        resultCanvasContext.save()
+        resultCanvasContext.globalAlpha = opacity
+        resultCanvasContext.drawImage(flag, 0, 0, size, size)
+        resultCanvasContext.restore()
+    }
+
+    initFlagCanvas('flags/german.png', resultCanvas.width, 1)
+
+</script>
+
+</body>
+</html>
