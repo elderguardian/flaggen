@@ -5,6 +5,7 @@ const flagOpacityRange = document.getElementById('flagOpacity')
 const circularImageCheckbox = document.getElementById('circularImageCheckbox')
 const dontAdjustImageCheckbox = document.getElementById('dontAdjustImageCheckbox')
 const imageInput = document.getElementById('imageUploadInput')
+const downloadButton = document.getElementById('downloadCanvas')
 
 const resultCanvasContext = resultCanvas.getContext('2d')
 
@@ -88,4 +89,15 @@ window.onload = () => {
     }
 
     redrawCanvas()
+}
+
+downloadButton.onclick = event => {
+    event.preventDefault()
+
+    const randomFileName = (Math.random() + 1).toString(36).substring(7)
+
+    const downloadLink = document.createElement('a')
+    downloadLink.href = resultCanvas.toDataURL('image/png')
+    downloadLink.download = randomFileName
+    downloadLink.click()
 }
