@@ -2,41 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profilbild Generator - #Stolzmonat</title>
     <script defer src="js/index.js"></script>
+    <link rel="stylesheet" href="pico/pico.min.css">
 </head>
 <body>
-<label for="flagOpacity">Opazität der Flagge
-    <input id="flagOpacity" type="range" min="0" max="100" value="100">
-</label>
-<label for="flagSelect">Wählen Sie eine Flagge aus.
-    <select id="flagSelect">
-        <option value="flags/germanPride.png" selected>Deutschland Pride</option>
-        <option value="flags/german.png">Deutschland</option>
-        <option value="flags/germanGradient.png">Deutschland Farbverlauf</option>
-        <option value="flags/austrian.png">Österreich</option>
-        <option value="flags/swizz.png">Schweiz</option>
-        <option value="flags/kaiserreich.png">Kaiserreich</option>
-    </select>
-</label>
-<label for="circularImageCheckbox">
-    <input type="checkbox" id="circularImageCheckbox">
-    Profilbild Runden
-</label>
+<main class="container">
+    <hgroup>
+        <h1>#Stolzmonat Profilbild Generator</h1>
+        <h2>Die von Ihnen hochgeladenen Dateien werden nicht von uns gespeichert.</h2>
+    </hgroup>
+    <form>
+        <section class="grid">
+            <article id="configurationSection">
+                <h2>Konfiguration</h2>
+                <div>
+                    <label for="flagSelect">Wählen Sie eine Flagge aus.
+                        <select id="flagSelect">
+                            <option value="flags/germanPride.png" selected>Deutschland Pride</option>
+                            <option value="flags/german.png">Deutschland</option>
+                            <option value="flags/germanGradient.png">Deutschland Farbverlauf</option>
+                            <option value="flags/austrian.png">Österreich</option>
+                            <option value="flags/swizz.png">Schweiz</option>
+                            <option value="flags/kaiserreich.png">Kaiserreich</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label for="circularImageCheckbox">
+                        <input type="checkbox" id="circularImageCheckbox">
+                        Profilbild Runden
+                    </label>
 
-<label for="dontAdjustImageCheckbox">
-    <input type="checkbox" id="dontAdjustImageCheckbox">
-    Bild nicht an Padding anpassen
-</label>
-<label for="paddingRange">Padding zum Rand
-    <input id="paddingRange" type="range" min="0" max="200" value="50">
-</label>
-<label for="imageUploadInput">Profilbild
-    <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
-           accept="image/*">
-</label>
-<canvas id="resultCanvas" style="width: 90%"></canvas>
+                    <label for="dontAdjustImageCheckbox">
+                        <input type="checkbox" id="dontAdjustImageCheckbox">
+                        Bild nicht an Padding anpassen
+                    </label>
+                </div>
+                <div>
+                    <label for="paddingRange">Padding zum Rand
+                        <input id="paddingRange" type="range" min="0" max="200" value="50">
+                    </label>
 
-<button id="downloadCanvas">Herunterladen</button>
+                    <label for="flagOpacity">Opazität der Flagge
+                        <input id="flagOpacity" type="range" min="0" max="100" value="100">
+                    </label>
+                </div>
+                <div>
+                    <label for="imageUploadInput">Profilbild
+                        <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
+                               accept="image/*">
+                    </label>
+                </div>
+                <div>
+                    <button id="downloadCanvas">Herunterladen</button>
+                </div>
+            </article>
+            <article id="outputSection">
+                <h2>Vorschau</h2>
+                <div style="display: flex; justify-content: center">
+                    <canvas id="resultCanvas" style="width: 90%"></canvas>
+                </div>
+            </article>
+        </section>
+    </form>
+    <footer>
+        <hr>
+        <p style="padding-top: 20px">
+            Erstellt und gehostet von
+            <a data-tooltip="Twitter" href="https://twitter.com/katzenmaedchen" target="_blank">@katzenmaedchen</a>.
+        </p>
+    </footer>
+</main>
 </body>
 </html>
