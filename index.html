@@ -5,11 +5,25 @@
     <title>Title</title>
 </head>
 <body>
+<label for="flagOpacity">Opazität der Flagge
+    <input id="flagOpacity" type="range" min="0" max="100" value="100">
+</label>
+<label for="flagSelect">Wählen Sie eine Flagge aus.
+    <select id="flagSelect">
+        <option value="flags/germanPride.png" selected>Deutschland Pride</option>
+        <option value="flags/german.png">Deutschland</option>
+        <option value="flags/germanGradient.png">Deutschland Farbverlauf</option>
+        <option value="flags/austrian.png">Österreich</option>
+        <option value="flags/swizz.png">Schweiz</option>
+        <option value="flags/kaiserreich.png">Kaiserreich</option>
+    </select>
 </label>
 <canvas id="resultCanvas" style="width: 90%"></canvas>
 <script>
     const resultCanvas = document.getElementById('resultCanvas')
     const resultCanvasContext = resultCanvas.getContext('2d')
+    const flagSelect = document.getElementById('flagSelect')
+    const flagOpacityRange = document.getElementById('flagOpacity')
 
     const loadedImage = src => new Promise(resolve => {
         const image = new Image()
@@ -28,7 +42,25 @@
         resultCanvasContext.restore()
     }
 
-    initFlagCanvas('flags/german.png', resultCanvas.width, 1)
+    const redrawCanvas = async () => {
+        const flagToUse = flagSelect.value ?? 'german.png'
+        const flagOpacity = flagOpacityRange.value / 100
+
+        await initFlagCanvas(flagToUse, resultCanvas.width, flagOpacity)
+    }
+
+    window.onload = () => {
+        const redrawCallbackElements = [
+            flagSelect, flagOpacityRange
+        ]
+
+        for (let redrawCallbackElement of redrawCallbackElements) {
+            redrawCallbackElement.oninput = () => redrawCanvas()
+            redrawCallbackElement.onchange = () => redrawCanvas()
+        }
+
+        redrawCanvas()
+    }
 
 </script>
 
