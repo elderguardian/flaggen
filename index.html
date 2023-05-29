@@ -18,12 +18,23 @@
         <option value="flags/kaiserreich.png">Kaiserreich</option>
     </select>
 </label>
+<label for="paddingRange">Padding zum Rand
+    <input id="paddingRange" type="range" min="0" max="200" value="50">
+</label>
+<label for="imageUploadInput">Profilbild
+    <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
+           accept="image/*">
 <canvas id="resultCanvas" style="width: 90%"></canvas>
 <script>
     const resultCanvas = document.getElementById('resultCanvas')
-    const resultCanvasContext = resultCanvas.getContext('2d')
     const flagSelect = document.getElementById('flagSelect')
+    const paddingRange = document.getElementById('paddingRange')
     const flagOpacityRange = document.getElementById('flagOpacity')
+    const imageInput = document.getElementById('imageUploadInput')
+
+    const resultCanvasContext = resultCanvas.getContext('2d')
+
+    const fileReader = new FileReader()
 
     const loadedImage = src => new Promise(resolve => {
         const image = new Image()
@@ -42,16 +53,44 @@
         resultCanvasContext.restore()
     }
 
+    const addImageToCanvas = (imageFile, padding) => {
+        fileReader.readAsDataURL(imageFile)
+
+        fileReader.onloadend = async () => {
+            const profilePictureAsImage = await loadedImage(fileReader.result)
+            const canvasSize = resultCanvas.width
+            const canvasCenter = canvasSize * 0.5
+
+            const radius = canvasCenter - padding
+
+            resultCanvasContext.save()
+            resultCanvasContext.beginPath()
+
+            resultCanvasContext.arc(canvasCenter, canvasCenter, radius, 0, Math.PI * 2, true)
+
+            resultCanvasContext.closePath()
+            resultCanvasContext.clip()
+
+            resultCanvasContext.drawImage(profilePictureAsImage, 0, 0, resultCanvas.width, resultCanvas.height)
+        }
+    }
+
     const redrawCanvas = async () => {
         const flagToUse = flagSelect.value ?? 'german.png'
+        const file = imageInput.files[0]
         const flagOpacity = flagOpacityRange.value / 100
 
         await initFlagCanvas(flagToUse, resultCanvas.width, flagOpacity)
+
+        if (file) {
+            const padding = paddingRange.value
+            addImageToCanvas(file, padding)
+        }
     }
 
     window.onload = () => {
         const redrawCallbackElements = [
-            flagSelect, flagOpacityRange
+            flagSelect, flagOpacityRange, imageInput, paddingRange
         ]
 
         for (let redrawCallbackElement of redrawCallbackElements) {
