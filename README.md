@@ -1,0 +1,1 @@
+# stolzmonat-generator
