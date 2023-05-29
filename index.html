@@ -18,18 +18,30 @@
         <option value="flags/kaiserreich.png">Kaiserreich</option>
     </select>
 </label>
+<label for="circularImageCheckbox">
+    <input type="checkbox" id="circularImageCheckbox">
+    Profilbild Runden
+</label>
+
+<label for="dontAdjustImageCheckbox">
+    <input type="checkbox" id="dontAdjustImageCheckbox">
+    Bild nicht an Padding anpassen
+</label>
 <label for="paddingRange">Padding zum Rand
     <input id="paddingRange" type="range" min="0" max="200" value="50">
 </label>
 <label for="imageUploadInput">Profilbild
     <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
            accept="image/*">
+</label>
 <canvas id="resultCanvas" style="width: 90%"></canvas>
 <script>
     const resultCanvas = document.getElementById('resultCanvas')
     const flagSelect = document.getElementById('flagSelect')
     const paddingRange = document.getElementById('paddingRange')
     const flagOpacityRange = document.getElementById('flagOpacity')
+    const circularImageCheckbox = document.getElementById('circularImageCheckbox')
+    const dontAdjustImageCheckbox = document.getElementById('dontAdjustImageCheckbox')
     const imageInput = document.getElementById('imageUploadInput')
 
     const resultCanvasContext = resultCanvas.getContext('2d')
@@ -53,7 +65,7 @@
         resultCanvasContext.restore()
     }
 
-    const addImageToCanvas = (imageFile, padding) => {
+    const addImageToCanvas = (imageFile, padding, isCircular, adjustImageToPadding) => {
         fileReader.readAsDataURL(imageFile)
 
         fileReader.onloadend = async () => {
@@ -62,16 +74,27 @@
             const canvasCenter = canvasSize * 0.5
 
             const radius = canvasCenter - padding
+            const start = canvasCenter - radius
+            const size = resultCanvas.width - (start * 2)
 
             resultCanvasContext.save()
             resultCanvasContext.beginPath()
 
-            resultCanvasContext.arc(canvasCenter, canvasCenter, radius, 0, Math.PI * 2, true)
+            if (isCircular) {
+                resultCanvasContext.arc(canvasCenter, canvasCenter, radius, 0, Math.PI * 2, true)
+            } else {
+                resultCanvasContext.rect(start, start, size, size)
+            }
 
             resultCanvasContext.closePath()
             resultCanvasContext.clip()
 
-            resultCanvasContext.drawImage(profilePictureAsImage, 0, 0, resultCanvas.width, resultCanvas.height)
+            if (adjustImageToPadding) {
+                resultCanvasContext.drawImage(profilePictureAsImage,start, start,size, size)
+            } else {
+                resultCanvasContext.drawImage(profilePictureAsImage, 0, 0, resultCanvas.width, resultCanvas.height)
+            }
+
         }
     }
 
@@ -84,13 +107,17 @@
 
         if (file) {
             const padding = paddingRange.value
-            addImageToCanvas(file, padding)
+            const isCircular = circularImageCheckbox.checked
+            const adjustImage = !dontAdjustImageCheckbox.checked
+
+            addImageToCanvas(file, padding, isCircular, adjustImage)
         }
     }
 
     window.onload = () => {
         const redrawCallbackElements = [
-            flagSelect, flagOpacityRange, imageInput, paddingRange
+            flagSelect, flagOpacityRange, imageInput, paddingRange,
+            circularImageCheckbox, dontAdjustImageCheckbox
         ]
 
         for (let redrawCallbackElement of redrawCallbackElements) {
