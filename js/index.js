@@ -1,10 +1,10 @@
 const resultCanvas = document.getElementById('resultCanvas')
-const flagSelect = document.getElementById('flagSelect')
+const imageInput = document.getElementById('imageUploadInput')
 const paddingRange = document.getElementById('paddingRange')
-const flagOpacityRange = document.getElementById('flagOpacity')
+const flagSelect = document.getElementById('flagSelect')
 const circularImageCheckbox = document.getElementById('circularImageCheckbox')
 const dontAdjustImageCheckbox = document.getElementById('dontAdjustImageCheckbox')
-const imageInput = document.getElementById('imageUploadInput')
+const flagOpacityRange = document.getElementById('flagOpacity')
 const downloadButton = document.getElementById('downloadCanvas')
 
 const resultCanvasContext = resultCanvas.getContext('2d')
@@ -79,8 +79,9 @@ const redrawCanvas = async () => {
 
 window.onload = () => {
     const redrawCallbackElements = [
-        flagSelect, flagOpacityRange, imageInput, paddingRange,
-        circularImageCheckbox, dontAdjustImageCheckbox
+        imageInput, paddingRange,
+        flagSelect, circularImageCheckbox,
+        dontAdjustImageCheckbox, flagOpacityRange
     ]
 
     for (let redrawCallbackElement of redrawCallbackElements) {
