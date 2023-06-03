@@ -11,6 +11,14 @@ const resultCanvasContext = resultCanvas.getContext('2d')
 
 const fileReader = new FileReader()
 
+
+const toggleCircularPreview = () => {
+    resultCanvas.style.borderRadius = resultCanvas.style.borderRadius === '50%'
+        ? '0'
+        : '50%'
+}
+
+
 const loadedImage = src => new Promise(resolve => {
     const image = new Image()
     image.src = src
