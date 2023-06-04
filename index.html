@@ -3,121 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profilbild Generator - #Stolzmonat</title>
     <script defer src="js/index.js"></script>
-    <link rel="stylesheet" href="pico/pico.min.css">
+    <link rel="stylesheet" href="style/bamboo-light.css">
+    <link rel="stylesheet" href="style/adjustments.css">
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <meta name="theme-color" content="#d20000">
-    <meta name="title" content="#Stolzmonat Profilbild">
-    <meta name="description" content="Generator für #Stolzmonat Profilbilder.">
+    <title>Stolzmonat Picture Generator — Preview, Edit and Generate</title>
+    <meta name="title" content="Stolzmonat Picture Generator — Preview, Edit and Generate">
+    <meta name="description" content="Join us and generate a profile picture for #Stolzmonat! ">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stolzmonat.fuwa.fun/">
-    <meta property="og:title" content="Profilbild Generator - #Stolzmonat">
-    <meta property="og:description" content="Generator für #Stolzmonat Profilbilder.">
-    <meta property="og:image" content="https://stolzmonat.fuwa.fun/banner.png">
+    <meta property="og:title" content="Stolzmonat Picture Generator — Preview, Edit and Generate">
+    <meta property="og:description" content="Join us and generate a profile picture for #Stolzmonat! ">
+    <meta property="og:image" content="banner.png">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://stolzmonat.fuwa.fun/">
-    <meta property="twitter:title" content="Profilbild Generator - #Stolzmonat">
-    <meta property="twitter:description" content="Generator für #Stolzmonat Profilbilder.">
-    <meta property="twitter:image" content="https://stolzmonat.fuwa.fun/banner.png">
-</head>
+    <meta property="twitter:url" content="https://metatags.io/">
+    <meta property="twitter:title" content="Stolzmonat Picture Generator — Preview, Edit and Generate">
+    <meta property="twitter:description" content="Join us and generate a profile picture for #Stolzmonat! ">
+    <meta property="twitter:image" content="banner.png">
 <body>
-<main class="container">
-    <hgroup>
-        <h1>#Stolzmonat Profilbild Generator</h1>
-        <h2>Die von Ihnen hochgeladenen Dateien werden nicht von uns gespeichert.</h2>
-    </hgroup>
-    <form>
-        <section class="grid">
-            <article id="configurationSection">
-                <h2>Konfiguration</h2>
-                <div>
-                    <label for="flagSelect">Wählen Sie eine Flagge aus.
-                        <select id="flagSelect">
-                            <option value="flags/germanPride.png" selected>Deutschland Pride</option>
-                            <option value="flags/german.png">Deutschland</option>
-                            <option value="flags/germanGradient.png">Deutschland Farbverlauf</option>
-                            <option value="flags/austrian.png">Österreich</option>
-                            <option value="flags/austrianPride.png">Österreich Pride</option>
-                            <option value="flags/swizz.png">Schweiz</option>
-                            <option value="flags/swizzPride.png">Schweiz Pride</option>
-                            <option value="flags/kaiserreich.png">Kaiserreich</option>
-                            <option value="flags/poland.jpg">Poland</option>
-                            <option value="flags/polandPride.jpeg">Poland Pride</option>
-                            <option value="flags/america.png">American</option>
-                            <option value="flags/argentinePride.png">Argentine Pride</option>
-                            <option value="flags/bulgarianPride.png">Bulgarian Pride</option>
-                            <option value="flags/chileanPride.png">Chilean Pride</option>
-                            <option value="flags/columbianPride.png">Columbian Pride</option>
-                            <option value="flags/croationPride.png">Croatian Pride</option>
-                            <option value="flags/dutchPride.png">Dutch Pride</option>
-                            <option value="flags/frenchPride.png">French Pride</option>
-                            <option value="flags/greecePride.png">Greece Pride</option>
-                            <option value="flags/hungarianPride.png">Hungarian Pride</option>
-                            <option value="flags/irishPride.png">Irish Pride</option>
-                            <option value="flags/italianPride.png">Italian Pride</option>
-                            <option value="flags/lativanPride.png">Lativan Pride</option>
-                            <option value="flags/mexicoPride.png">Mexican Pride</option>
-                            <option value="flags/paraguayanPride.png">Paraguayan Pride</option>
-                            <option value="flags/peruvianPride.png">Peruvian Pride</option>
-                            <option value="flags/polishPride.png">Polish Pride</option>
-                            <option value="flags/romanianPride.png">Romanian Pride</option>
-                            <option value="flags/russianPride.png">Russian Pride</option>
-                            <option value="flags/spanishPride.png">Spanish Pride</option>
-                            <option value="flags/uk.png">UK</option>
-                            <option value="flags/ukrainianPride.png">Ukrainian Pride</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <label for="circularImageCheckbox">
-                        <input type="checkbox" id="circularImageCheckbox">
-                        Profilbild Runden
-                    </label>
 
-                    <label for="dontAdjustImageCheckbox">
-                        <input type="checkbox" id="dontAdjustImageCheckbox">
-                        Bild nicht an Padding anpassen
-                    </label>
-                </div>
-                <div>
-                    <label for="paddingRange">Padding zum Rand
-                        <input id="paddingRange" type="range" min="0" max="200" value="50">
-                    </label>
+<header>
+    <h1>
+        <a href="">stolzmonat</a>:
+        picture generator
+    </h1>
+    <p>
+        The pictures you upload do no get processed or stored by us.
+        If you have any issues or want to help improving this website
+        you can visit our <a target="_blank" href="https://github.com/elderguardian/stolzmonat-generator">Git
+        Repository</a>
+    </p>
+</header>
 
-                    <label for="flagOpacity">Opazität der Flagge
-                        <input id="flagOpacity" type="range" min="0" max="100" value="100">
-                    </label>
-                </div>
-                <div>
-                    <label for="imageUploadInput">Profilbild
-                        <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file"
-                               accept="image/*">
-                    </label>
-                </div>
-                <div>
-                    <button id="downloadCanvas">Herunterladen</button>
-                </div>
-            </article>
-            <article id="outputSection">
-                <h2>Vorschau</h2>
-                <div style="display: flex; justify-content: center">
-                    <canvas id="resultCanvas" style="width: 90%"></canvas>
-                </div>
-                <label for="circularPreviewCheckbox" style="padding: 20px">
-                    <input type="checkbox" id="circularPreviewCheckbox" onchange="toggleCircularPreview()"/>
-                    Runder Preview
-                </label>
-            </article>
-        </section>
-    </form>
-    <footer>
-        <hr>
-        <p style="padding-top: 20px">
-            Tragen Sie etwas zum Code im
-            <a data-tooltip="GitHub" href="https://github.com/elderguardian/stolzmonat-generator" target="_blank">GitHub Repository</a>!
-        </p>
-    </footer>
+<main>
+
+    <section>
+        <h2>Configuration</h2>
+
+        <article>
+            <label for="imageUploadInput">Profile Picture
+                <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
+            </label>
+        </article>
+
+        <article>
+            <label for="flagSelect">Background image
+                <select id="flagSelect">
+                    <option value="flags/germanPride.png" selected>German Pride</option>
+                    <option value="flags/german.png">German</option>
+                    <option value="flags/germanGradient.png">German Gradient</option>
+                    <option value="flags/austrian.png">Austria</option>
+                    <option value="flags/austrianPride.png">Austria Pride</option>
+                    <option value="flags/swizz.png">Swizz</option>
+                    <option value="flags/swizzPride.png">Swizz Pride</option>
+                    <option value="flags/kaiserreich.png">Kaiserreich</option>
+                    <option value="flags/poland.jpg">Poland</option>
+                    <option value="flags/polandPride.jpeg">Poland Pride</option>
+                    <option value="flags/america.png">American</option>
+                    <option value="flags/argentinePride.png">Argentine Pride</option>
+                    <option value="flags/bulgarianPride.png">Bulgarian Pride</option>
+                    <option value="flags/chileanPride.png">Chilean Pride</option>
+                    <option value="flags/columbianPride.png">Columbian Pride</option>
+                    <option value="flags/croationPride.png">Croatian Pride</option>
+                    <option value="flags/dutchPride.png">Dutch Pride</option>
+                    <option value="flags/frenchPride.png">French Pride</option>
+                    <option value="flags/greecePride.png">Greece Pride</option>
+                    <option value="flags/hungarianPride.png">Hungarian Pride</option>
+                    <option value="flags/irishPride.png">Irish Pride</option>
+                    <option value="flags/italianPride.png">Italian Pride</option>
+                    <option value="flags/lativanPride.png">Lativan Pride</option>
+                    <option value="flags/mexicoPride.png">Mexican Pride</option>
+                    <option value="flags/paraguayanPride.png">Paraguayan Pride</option>
+                    <option value="flags/peruvianPride.png">Peruvian Pride</option>
+                    <option value="flags/polishPride.png">Polish Pride</option>
+                    <option value="flags/romanianPride.png">Romanian Pride</option>
+                    <option value="flags/russianPride.png">Russian Pride</option>
+                    <option value="flags/spanishPride.png">Spanish Pride</option>
+                    <option value="flags/uk.png">UK</option>
+                    <option value="flags/ukrainianPride.png">Ukrainian Pride</option>
+                </select>
+            </label>
+        </article>
+
+        <article>
+            <label for="paddingRange">Image padding
+                <input id="paddingRange" type="range" min="0" max="200" value="50">
+            </label>
+
+            <label for="flagOpacity">Flag opacity
+                <input id="flagOpacity" type="range" min="0" max="100" value="100">
+            </label>
+        </article>
+
+        <article>
+            <label for="circularImageCheckbox">
+                <input type="checkbox" id="circularImageCheckbox">
+                Round profile picture
+            </label>
+
+            <label for="dontAdjustImageCheckbox">
+                <input type="checkbox" id="dontAdjustImageCheckbox">
+                Adjust image to padding
+            </label>
+        </article>
+
+    </section>
+
+    <section id="resultContainer">
+        <h2>Result</h2>
+        <canvas id="resultCanvas" style="width: 90%"></canvas>
+        <label for="circularPreviewCheckbox" style="padding: 20px">
+            <input type="checkbox" id="circularPreviewCheckbox" onchange="toggleCircularPreview()"/>
+            Circular Preview
+        </label>
+        <button id="downloadCanvas">Download</button>
+    </section>
+
 </main>
+
+<footer>
+    <p style="padding-top: 20px">
+        [Go to <a href="https://github.com/elderguardian/stolzmonat-generator" target="_blank">GitHub Repository</a>]
+    </p>
+</footer>
+
 </body>
 </html>
