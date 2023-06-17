@@ -1,5 +1,12 @@
-# Stolzmonat Generator
-Generate profile pictures with a flag as background.
+<hr>
+
+<div align="center">
+  <img width="100" alt="Logo" src="https://raw.githubusercontent.com/elderguardian/flaggen/rebrand/favicon.png"><br>
+  <b>- flagGen -</b><br>
+  <i>generate profile pictures with a flag background</i>
+</div>
+
+<hr>
 
 ## Using it on your local computer
 1. Download the repository as zip
@@ -17,6 +24,3 @@ Generate profile pictures with a flag as background.
 ### How to add flags
 1. Add a new image to the `flags/` directory.
 2. Add the image to the list inside of `index.html`
-
-## Preview
-![Preview](preview.png)
