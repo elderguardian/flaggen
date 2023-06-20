@@ -1,7 +1,7 @@
 <hr>
 
 <div align="center">
-  <img width="100" alt="Logo" src="https://raw.githubusercontent.com/elderguardian/flaggen/rebrand/favicon.png"><br>
+  <img width="100" alt="Logo" src="https://raw.githubusercontent.com/elderguardian/flaggen/master/favicon.png"><br>
   <b>- flagGen -</b><br>
   <i>generate profile pictures with a flag background</i>
 </div>
